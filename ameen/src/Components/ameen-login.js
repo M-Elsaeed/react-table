@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import './ameen-login.css';
+import './ameen-login.scss';
 
 class Login extends Component {
     state = {
@@ -9,6 +9,7 @@ class Login extends Component {
         'remember': 'true',
         'submitted': false
     }
+
     componentDidMount() {
     }
     change = e => {
@@ -42,7 +43,7 @@ class Login extends Component {
         });
         if (this.emailValid() && this.passValid()) {
             let req = { 'email': this.state.email, 'password': this.state.password };
-            axios.post('http://173.199.166.52/~wknode/api/api/login',req)
+            axios.post('http://173.199.166.52/~wknode/api/api/login', req)
                 .then(res => {
                     console.log(JSON.stringify(res.data))
                     console.log('logged in successfully');
@@ -56,25 +57,24 @@ class Login extends Component {
     render() {
         return (
             <div>
-                <div className="semi-container" >
-                    <div id="top-semicircle" className="top-semicircle"></div>
-                    <div id="logo-semicircle" className="logo-semicircle"></div>
+                <div className="semicircle" >
+                    <div id="semicircle__blue" className="semicircle__blue"></div>
+                    <div id="semicircle__logo" className="semicircle__logo"></div>
                 </div>
-                <div className="dashed-container" >
-                    <div id="dashed-semicircle" className="dashed-semicircle"></div>
+                <div className="dashed-ellipse" >
+                    <div id="dashed-ellipse__border" className="dashed-ellipse__border"></div>
                 </div>
-                <div className="solid-container" >
-                    <div id="solid-semicircle" className="solid-semicircle"></div>
+                <div className="solid-ellipse" >
+                    <div id="solid-ellipse__border" className="solid-ellipse__border"></div>
                 </div>
-                <form className="login-form">
-                    <div className="form-container">
+                <form className="loginForm">
+                    <div className="loginForm__formContainer">
                         {
                             (!this.state.submitted) && (this.state.email === '') ?
                                 <input
                                     name="email"
                                     value={this.state.email}
                                     onChange={e => this.change(e)}
-                                    className="email-field"
                                     placeholder="email"
                                     type="email" />
                                 : this.emailValid() ?
@@ -82,14 +82,13 @@ class Login extends Component {
                                         name="email"
                                         value={this.state.email}
                                         onChange={e => this.change(e)}
-                                        className="email-field"
                                         placeholder="email"
                                         type="email" /> :
                                     <input
                                         name="email"
                                         value={this.state.email}
                                         onChange={e => this.change(e)}
-                                        className="email-field invalid"
+                                        className="invalid"
                                         placeholder="email"
                                         type="email" />}
 
@@ -99,7 +98,6 @@ class Login extends Component {
                                 name="password"
                                 value={this.state.password}
                                 onChange={e => this.change(e)}
-                                className="password-field"
                                 placeholder="password"
                                 type="password" /> :
                             this.passValid() ?
@@ -107,14 +105,13 @@ class Login extends Component {
                                     name="password"
                                     value={this.state.password}
                                     onChange={e => this.change(e)}
-                                    className="password-field"
                                     placeholder="password"
                                     type="password" /> :
                                 <input
                                     name="password"
                                     value={this.state.password}
                                     onChange={e => this.change(e)}
-                                    className="password-field invalid"
+                                    className="invalid"
                                     placeholder="password"
                                     type="password" />
                         }
@@ -124,17 +121,17 @@ class Login extends Component {
                                 name="remember"
                                 value={this.state.remember}
                                 onChange={e => this.change(e)}
-                                className="checkbox"
                                 type="checkbox" />
                             Remember Me
                         </label>
                         <button
                             onClick={e => this.onSubmit(e)}
-                            className="login-button">LOG IN</button>
+                            className="loginButton">LOG IN</button>
                     </div>
                 </form>
                 <div>
-                    <br></br><br></br><br></br><br></br>
+                    <br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br>
+                    {/* Ask if this is ok to do this to add space to the bottom of the page */}
                 </div>
             </div>
         );
