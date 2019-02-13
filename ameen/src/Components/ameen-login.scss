@@ -8,34 +8,35 @@
     margin: 0 auto;
     overflow: hidden;
     position: relative;
+
+    &__blue {
+        margin-top: -50%;
+        width: 100%;
+        height: auto;
+        padding-top: 100%;
+        border-radius: 50%;
+        background-image: -webkit-linear-gradient(right bottom, #2d3851, #354463);
+        background-image: linear-gradient(to left top, #2d3851, #354463);
+        z-index: 2;
+    }
+
+    &__logo {
+        margin-top: -50%;
+        width: 100%;
+        height: auto;
+        padding-top: 100%;
+        border-radius: 50%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        background-image: url(../res/logo.png);
+        background-repeat: no-repeat;
+        background-position: bottom;
+        background-size: 102px 146px;
+        z-index: 3;
+    }
 }
 
-.semicircle__blue {
-    margin-top: -50%;
-    width: 100%;
-    height: auto;
-    padding-top: 100%;
-    border-radius: 50%;
-    background-image: -webkit-linear-gradient(right bottom, #2d3851, #354463);
-    background-image: linear-gradient(to left top, #2d3851, #354463);
-    z-index: 2;
-}
-
-.semicircle__logo {
-    margin-top: -50%;
-    width: 100%;
-    height: auto;
-    padding-top: 100%;
-    border-radius: 50%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    background-image: url(../res/logo.png);
-    background-repeat: no-repeat;
-    background-position: bottom;
-    background-size: 102px 146px;
-    z-index: 3;
-}
 
 .dashed-ellipse {
     z-index: 5;
@@ -44,21 +45,23 @@
     left: 1.5%;
     overflow: hidden;
     position: absolute;
+
+    &__border {
+        margin-top: -52.5%;
+        width: 100%;
+        height: auto;
+        padding-top: 100%;
+        top: 0;
+        left: 0;
+        background-color: transparent;
+        border: gray dashed;
+        border-width: 1px;
+        border-radius: 50%;
+        z-index: 3;
+    }
 }
 
-.dashed-ellipse__border {
-    margin-top: -52.5%;
-    width: 100%;
-    height: auto;
-    padding-top: 100%;
-    top: 0;
-    left: 0;
-    background-color: transparent;
-    border: gray dashed;
-    border-width: 1px;
-    border-radius: 50%;
-    z-index: 3;
-}
+
 
 .solid-ellipse {
     z-index: 5;
@@ -67,21 +70,22 @@
     left: 3%;
     overflow: hidden;
     position: absolute;
+
+    &__border {
+        margin-top: -55%;
+        width: 100%;
+        height: auto;
+        padding-top: 100%;
+        top: 0;
+        left: 0;
+        background-color: transparent;
+        border: gray solid;
+        border-radius: 50%;
+        z-index: 3;
+        border-width: 1px;
+    }
 }
 
-.solid-ellipse__border {
-    margin-top: -55%;
-    width: 100%;
-    height: auto;
-    padding-top: 100%;
-    top: 0;
-    left: 0;
-    background-color: transparent;
-    border: gray solid;
-    border-radius: 50%;
-    z-index: 3;
-    border-width: 1px;
-}
 
 .loginForm {
     border-radius: 5px;
@@ -97,12 +101,13 @@
     text-align: center;
     z-index: 1;
     box-shadow: -3px 6px 24px 0px #EFF3F5;
+
+    &__formContainer {
+        margin: 0 auto;
+        z-index: 1;
+    }
 }
 
-.loginForm__formContainer {
-    margin: 0 auto;
-    z-index: 1;
-}
 
 
 input[type=password],
