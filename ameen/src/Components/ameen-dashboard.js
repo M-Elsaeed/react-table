@@ -93,6 +93,10 @@ class Dashboard extends Component {
                     </Link>
                 </div>
                 <div className="user-side-bar" >
+                    <div className="user-side-bar__img" ></div>
+                    <div className="user-side-bar__hello"><span>Hello</span><br></br><span className="--sky-blue">M.Diab</span></div>
+                </div>
+                <div className="content" >
 
                 </div>
             </div>

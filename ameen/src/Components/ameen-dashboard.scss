@@ -14,9 +14,11 @@
     background-image: linear-gradient($dir, #334261, #536281);
 
 }
-.body{
+
+.body {
     background-color: lightgray;
 }
+
 .side-panel {
     position: fixed;
     width: 19%;
@@ -146,7 +148,7 @@
     @include btnFade(to right);
 }
 
-//110,35
+//Not clean
 .top-bar {
     width: 64%;
     height: 80px;
@@ -182,10 +184,11 @@
         color: white;
         overflow: hidden;
         padding: 10px 20px 10px 20px;
-        
+
     }
 }
 
+//Clean
 .user-side-bar {
     @include panelFade(to top right);
     position: absolute;
@@ -194,11 +197,35 @@
     height: 80px;
     margin-left: 83%;
     display: flex !important;
-    justify-content: space-around !important;
+    // justify-content:  !important;
     align-items: center !important;
 
+    &__img {
+        width: 20%;
+        height: 100%;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-image: url("../res/user-image.png");
+        margin-left: 20%;
+    }
+
+    &__hello {
+        color: grey;
+        margin-left: 10px;
+        text-align: left;
+    }
 }
 
+.content {
+    margin-left: 19%;
+    background-color: #eff3f6;
+    height:982px;
+    width:81%;
+}
+
+.--sky-blue {
+    color: lightskyblue;
+}
 
 .--inactive {
     color: #678198;
