@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <nav></nav>
+    <div id="top-semicircle" class="top-semicircle"></div>
+    <form class="login-form">
+        <div class="form-container">
+            <input class="user-field" placeholder="user name" type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+                   required checked>
+            <input class="password-field" placeholder="password" type="password" pattern="..+" required checked>
+            <label>
+                <input class="checkbox" type="checkbox">
+                Remember Me
+            </label>
+            <button class="login-button">LOG IN</button>
+        </div>
+    </form>
+</body>
+<link rel="stylesheet" href="./ameen-login.css">
+<script>
+    let width = window.innerWidth * 0.7;
+    let height = width / 2
+    let circle = document.getElementById("top-semicircle");
+    console.log(circle, width, height);
+    circle.style.setProperty("height", (height + "px"));
+    circle.style.setProperty("width", (width + "px"));
+    circle.style.setProperty("top",(-(height*0.05)+"px"));
+    circle.style.setProperty("border-bottom-right-radius", (width + "px"));
+    circle.style.setProperty("border-bottom-left-radius", (width + "px"));
+    console.log(circle.style.borderBottomRightRadius)
+
+</script>
+
+</html>

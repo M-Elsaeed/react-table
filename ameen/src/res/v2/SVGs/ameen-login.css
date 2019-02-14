@@ -1,0 +1,106 @@
+* {
+    box-sizing: border-box;
+}
+
+.form-container {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+}
+
+.user-field,
+.password-field {
+    width: 90%;
+    padding: 10px;
+    margin: 5px;
+    border-radius: 5px;
+    height: 40px;
+    background-color: rgb(244, 247, 250);
+    border-width: 0px;
+    background-repeat: no-repeat;
+    background-position: right;
+    background-size: 40px 20px;
+}
+
+.user-field {
+    background-image: url(User.svg);
+}
+
+.password-field {
+    background-image: url(Eye.svg);
+}
+
+.checkbox {
+    vertical-align: middle;
+}
+
+label {
+    display: block;
+    color: lightgrey;
+    float: left;
+    padding: 10px;
+    margin: 5px
+}
+
+.login-button {
+    width: 90%;
+    height: 40px;
+    padding: 5px;
+    margin: 5px;
+    border-radius: 5px;
+    border-color: transparent;
+    border-width: 0px;
+    background-image: linear-gradient(to right, rgba(0, 112, 204), rgba(0, 222, 255));
+    color: white;
+}
+.login-button:hover{
+    cursor: pointer;
+    width:95%;
+    height: 50px;
+}
+
+.login-form {
+    position: absolute;
+    border-radius: 5px;
+    border-width: 0px;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    margin-top: 30%;
+    height: 60%;
+    width: 30%;
+    padding: 10px;
+    /* background-color: black; */
+    z-index: 1;
+    text-align: center;
+    box-shadow: 0px 0px 50px 10px grey;
+    background-image: url(Arrow.svg);
+    background-repeat: no-repeat;
+    background-position: bottom;
+    background-size: 40px 20px;
+}
+
+.top-semicircle {
+    position: absolute;
+    background-color: rgb(53, 68, 99);
+    /* Works */
+    /* height: 432px;
+    width: 864px;
+    border-bottom-left-radius: 864px;
+    border-bottom-right-radius: 864px; */
+    /* Doesn't Work */
+    /* After research, this can only be acheived usin JS */
+    /* height: 22.5%;
+    width: 50%;
+    border-bottom-left-radius: 50%;
+    border-bottom-right-radius: 50%; */
+    left: 0;
+    right: 0;
+    top: 0;
+    margin-left: auto;
+    margin-right: auto;
+    z-index: 2;
+}

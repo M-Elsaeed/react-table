@@ -117,8 +117,8 @@ input[type=email] {
     margin: 5px;
     border-radius: 5px;
     height: 40px;
+    border-width: 0;
     background-color: #F4F7FA;
-    border-width: 0px;
     background-repeat: no-repeat;
     background-position: right;
     background-size: 40px 20px;
@@ -162,6 +162,6 @@ label {
 
 .invalid {
     border-color: red;
-    border-width: 2px;
+    border-width: 2px!important;
     border-style: solid;
 }
