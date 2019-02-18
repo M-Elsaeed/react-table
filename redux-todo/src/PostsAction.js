@@ -6,6 +6,7 @@ export const FETCH_POSTS_FAILURE = 'FETCH_POSTS_FAILURE';
 export const RESET_POSTS = 'RESET_POSTS';
 
 export function fetchPosts() {
+    console.log('fetch called');
     const request = axios({
         method: 'get',
         url: "https://jsonplaceholder.typicode.com/posts"
@@ -18,6 +19,7 @@ export function fetchPosts() {
 }
 
 export function fetchPostsSuccess(posts) {
+    console.log('success called');
     return {
         type: FETCH_POSTS_SUCCESS,
         payload: posts
@@ -25,6 +27,7 @@ export function fetchPostsSuccess(posts) {
 }
 
 export function fetchPostsFailure(error) {
+    console.log('failed called');
     return {
         type: FETCH_POSTS_FAILURE,
         payload: error

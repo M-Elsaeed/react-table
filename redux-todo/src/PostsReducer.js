@@ -1,3 +1,10 @@
+import {
+    FETCH_POSTS,
+    FETCH_POSTS_SUCCESS,
+    FETCH_POSTS_FAILURE,
+    RESET_POSTS
+} from './PostsAction'
+
 const INITIAL_STATE = {
     postsList: {
         posts: [],
@@ -6,6 +13,7 @@ const INITIAL_STATE = {
     }
 };
 export default function (state = INITIAL_STATE, action) {
+    let error
     switch (action.type) {
         case FETCH_POSTS: // start fetching posts and set loading = true
             return {
