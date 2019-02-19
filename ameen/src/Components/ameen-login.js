@@ -56,7 +56,7 @@ class Login extends Component {
 
     render() {
         return (
-            <div>
+            <div className="ameen-login-component" >
                 <div className="semicircle" >
                     <div id="semicircle__blue" className="semicircle__blue"></div>
                     <div id="semicircle__logo" className="semicircle__logo"></div>

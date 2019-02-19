@@ -17,7 +17,7 @@ class PostsList extends Component {
           <div className="container">
             <h1>Posts</h1>
             <ul className="list-group">
-              {posts.map((post) => <li key={post} >{post.title}</li>)}
+              {posts.map((post) => <li key={post.id}>{post.title}</li>)}
             </ul>
           </div>
     )

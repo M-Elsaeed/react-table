@@ -57,7 +57,7 @@ class Dashboard extends Component {
 
     render() {
         return (
-            <div>
+            <div className="ameen-dashboard-component" >
                 <div className="side-panel" >
                     <div className="side-panel__semi-circle" >
                         <div id="side-panel__blue" className="side-panel__blue"></div>
@@ -98,6 +98,75 @@ class Dashboard extends Component {
                 </div>
                 <div className="content" >
 
+                    <table>
+                        <tbody>
+                            <tr>
+                                <th className="--first" >ID</th>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th className="--last" >Role</th>
+                            </tr>
+                            <tr className="--data-row" >
+                                <td className="--first" >
+                                    1
+                                </td>
+                                <td >
+                                    Doaa Saleh
+                                </td>
+                                <td >
+                                    doaa.saleh@webkeyz.com
+                                </td>
+                                <td className="--last" >
+                                    Adminstrator
+                                </td>
+                            </tr>
+                            <tr className="--data-row" >
+                                <td className="--first" >
+                                    1
+                                </td>
+                                <td >
+                                    Doaa Saleh
+                                </td>
+                                <td >
+                                    doaa.saleh@webkeyz.com
+                                </td>
+                                <td className="--last" >
+                                    Adminstrator
+                                </td>
+                            </tr>
+                            <tr className="--data-row" >
+                                <td className="--first" >
+                                    1
+                                </td>
+                                <td >
+                                    Doaa Saleh
+                                </td>
+                                <td >
+                                    doaa.saleh@webkeyz.com
+                                </td>
+                                <td className="--last" >
+                                    Adminstrator
+                                </td>
+                            </tr>
+                            <tr className="--data-row" >
+                                <td className="--first" >
+                                    1
+                                </td>
+                                <td >
+                                    Doaa Saleh
+                                </td>
+                                <td >
+                                    doaa.saleh@webkeyz.com
+                                </td>
+                                <td className="--last" >
+                                    Adminstrator
+                                </td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>
         );
