@@ -3,10 +3,9 @@ import {
     applyMiddleware,
     compose
 } from 'redux';
-// import rootReducer from './reducers';
+import rootReducer from './Reducers/RootReducer';
 import promise from 'redux-promise';
 import logger from 'redux-logger';
-import loginReducer from './Reducers/login-reducer';
 
 let middlewares;
 if (process.env.NODE_ENV !== 'production') {
@@ -19,5 +18,5 @@ if (process.env.NODE_ENV !== 'production') {
 const composer = compose(middlewares);
 // usually the reducer is the rootReducer where we previously grouped all the reducers into one using combine reducers
 export default function () {
-    return createStore(loginReducer, composer);
+    return createStore(rootReducer, composer);
 }

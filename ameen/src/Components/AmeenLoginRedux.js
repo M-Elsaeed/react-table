@@ -1,19 +1,7 @@
 import React, { Component } from 'react';
-import './ameen-login.scss';
+import './AmeenLogin.scss';
 
 class Login extends Component {
-    // change = e => {
-    //     if (e.target.getAttribute('type') === 'checkbox') {
-    //         let newCheck = String(!(this.props.remember === "true"))
-    //         this.setState({
-    //             [e.target.name]: newCheck
-    //         });
-    //     }
-    //     else
-    //         this.setState({
-    //             [e.target.name]: e.target.value
-    //         });
-    // };
     emailValid() {
         let emailRegex = /[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/gi;
         return emailRegex.test(this.props.email);
@@ -22,28 +10,6 @@ class Login extends Component {
         let passRegex = /^...+$/gi;
         return passRegex.test(this.props.password);
     }
-    // onSubmit = e => {
-    //     e.preventDefault();
-    //     //Do Something with the state
-    //     this.setState({
-    //         // 'email': '',
-    //         // 'password': '',
-    //         // 'remember': 'true',
-    //         'submitted': true
-    //     });
-    //     if (this.emailValid() && this.passValid()) {
-    //         let req = { 'email': this.props.email, 'password': this.props.password };
-    //         axios.post('http://173.199.166.52/~wknode/api/api/login', req)
-    //             .then(res => {
-    //                 console.log(JSON.stringify(res.data))
-    //                 console.log('logged in successfully');
-    //             })
-    //             .catch(err => {
-    //                 console.log(err);
-    //             })
-    //     }
-    // };
-
     render() {
         return (
             <div className="ameen-login-component" >
@@ -57,8 +23,31 @@ class Login extends Component {
                 <div className="solid-ellipse" >
                     <div id="solid-ellipse__border" className="solid-ellipse__border"></div>
                 </div>
+
                 <form className="loginForm">
+
                     <div className="loginForm__formContainer">
+                        {
+                            this.props.submitted && (!this.emailValid() || !this.passValid()) ?
+                                <div>
+                                    {
+                                        !this.emailValid() ?
+                                            <div className="--alerting">
+                                                <p>Email is invalid it has to be in the form ABC@XYZ.MN</p>
+                                            </div>
+                                            : undefined
+                                    }
+                                    {
+                                        !this.passValid() ?
+                                            <div className="--alerting">
+                                                <p>Password is invalid minimum 3 charachters</p>
+                                            </div>
+                                            : undefined
+                                    }
+                                </div>
+                                : undefined
+
+                        }
                         {
                             (!this.props.submitted) && (this.props.email === '') ?
                                 <input
@@ -106,22 +95,48 @@ class Login extends Component {
                                     type="password" />
                         }
                         <label>
-                            <input
-                                checked={this.props.remember === "true"}
-                                name="remember"
-                                value={this.props.remember}
-                                onChange={e => this.props.toggleRemember()}
-                                type="checkbox" />
+                            {
+                                this.props.remember === "true" ?
+                                    <input
+                                        checked
+                                        name="remember"
+                                        onChange={e => this.props.toggleRemember()}
+                                        type="checkbox" /> :
+                                    <input
+                                        name="remember"
+                                        onChange={e => this.props.toggleRemember()}
+                                        type="checkbox" />
+                            }
                             Remember Me
                         </label>
-                        <button
-                            onClick={e => {e.preventDefault();this.props.login({email:this.props.email,password:this.props.password})}}
-                            className="loginButton">LOG IN</button>
+                        {
+                            this.props.loading ?
+                                // abc@dkf.com
+                                <button
+                                    onClick={e => e.preventDefault()}
+                                    disabled
+                                    style={{ cursor: "not-allowed" }}
+                                    className="loginButton">Please Wait...
+                                </button>
+                                :
+                                <button
+                                    onClick={e => {
+                                        e.preventDefault();
+                                        (this.emailValid() && this.passValid()) ?
+                                            this.props.login({
+                                                "email": this.props.email, "password": this.props.password
+                                            })
+                                            :
+                                            this.props.invalidLoginAttempt()
+                                    }
+                                    }
+                                    className="loginButton">LOG IN</button>
+                        }
                     </div>
                 </form>
                 <div>
-                    <br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br>
                     {/* Ask if this is ok to do this to add space to the bottom of the page */}
+                    <br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br>
                 </div>
             </div>
         );

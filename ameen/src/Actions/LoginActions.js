@@ -1,33 +1,37 @@
 import axios from 'axios';
 //Post list
 export const LOGIN_ATTEMPT = 'LOGIN_ATTEMPT';
+export const INVALID_LOGIN_ATTEMPT = 'INVALID_LOGIN_ATTEMPT';
 export const LOGIN_ATTEMPT_SUCCESS = 'LOGIN_ATTEMPT_SUCCESS';
 export const LOGIN_ATTEMPT_FAILURE = 'LOGIN_ATTEMPT_FAILURE';
 export const CHANGE_EMAIL = 'CHANGE_EMAIL';
 export const CHANGE_PASSWORD = 'CHANGE_PASSWORD';
 export const TOGGLE_REMEMBER = 'TOGGLE_REMEMBER';
 
+export function invalidLoginAttempt() {
+    return {
+        type: INVALID_LOGIN_ATTEMPT
+    };
+}
+
 export function login(obj) {
     console.log('fetch called');
-    const request = axios({
-        method: 'post',
-        body:{
-            email: obj.email,
-            password: obj.password
-        },
-        url: "http://173.199.166.52/~wknode/api/api/login"
-    });
+    console.log(JSON.stringify(obj));
+    const request = axios.post('http://173.199.166.52/~wknode/api/api/login', obj);
+
     return {
         type: LOGIN_ATTEMPT,
+        loading: true,
         payload: request
     };
 }
 
-export function loginSuccess(response) {
+export function loginSuccess(access_token) {
     console.log('success called');
     return {
         type: LOGIN_ATTEMPT_SUCCESS,
-        tokens: response
+        loading: false,
+        tokens: access_token
     };
 }
 
@@ -35,7 +39,8 @@ export function loginFailure(error) {
     console.log('failed called');
     return {
         type: LOGIN_ATTEMPT_FAILURE,
-        payload: error
+        loading: false,
+        errors: error
     };
 }
 
@@ -61,4 +66,3 @@ export function toggleRememberMe() {
         type: TOGGLE_REMEMBER
     };
 }
-
