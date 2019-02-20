@@ -7,11 +7,15 @@ export const CHANGE_EMAIL = 'CHANGE_EMAIL';
 export const CHANGE_PASSWORD = 'CHANGE_PASSWORD';
 export const TOGGLE_REMEMBER = 'TOGGLE_REMEMBER';
 
-export function login() {
+export function login(obj) {
     console.log('fetch called');
     const request = axios({
-        method: 'get',
-        url: "https://jsonplaceholder.typicode.com/posts"
+        method: 'post',
+        body:{
+            email: obj.email,
+            password: obj.password
+        },
+        url: "http://173.199.166.52/~wknode/api/api/login"
     });
     return {
         type: LOGIN_ATTEMPT,

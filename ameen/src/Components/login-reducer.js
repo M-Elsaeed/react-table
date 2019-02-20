@@ -21,7 +21,8 @@ export default function (state = INITIAL_STATE, action) {
                 
                 return {
                     ...state,
-                    'submitted': true
+                    'submitted': true,
+                    'response':action.payload
                 }
             }
         case LOGIN_ATTEMPT_SUCCESS:

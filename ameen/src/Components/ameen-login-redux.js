@@ -115,7 +115,7 @@ class Login extends Component {
                             Remember Me
                         </label>
                         <button
-                            onClick={e => {e.preventDefault();this.props.login()}}
+                            onClick={e => {e.preventDefault();this.props.login({email:this.props.email,password:this.props.password})}}
                             className="loginButton">LOG IN</button>
                     </div>
                 </form>

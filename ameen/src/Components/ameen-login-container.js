@@ -30,9 +30,12 @@ const mapDispatchToProps = (dispatch) => {
         toggleRemember: () => {
             dispatch(toggleRememberMe())
         },
-        login: () => {
-            dispatch(login())
+        login: (obj) => {
+            dispatch(login(obj))
                 .then((response) => {
+                    console.log('here')
+                    console.log(response);
+                    console.log(response.payload.status);
                     !response.error ?
                         dispatch(loginSuccess(response.payload.data)) :
                         dispatch(loginFailure(response.payload.data));
