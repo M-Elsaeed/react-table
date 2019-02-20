@@ -5,7 +5,7 @@ import {
     CHANGE_EMAIL,
     CHANGE_PASSWORD,
     TOGGLE_REMEMBER
-} from './login-actions'
+} from '../Actions/login-actions'
 
 const INITIAL_STATE = {
     'email': '',

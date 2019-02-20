@@ -6,7 +6,7 @@ import {
 // import rootReducer from './reducers';
 import promise from 'redux-promise';
 import logger from 'redux-logger';
-import loginReducer from './login-reducer';
+import loginReducer from './Reducers/login-reducer';
 
 let middlewares;
 if (process.env.NODE_ENV !== 'production') {

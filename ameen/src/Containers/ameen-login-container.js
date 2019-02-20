@@ -8,8 +8,8 @@ import {
     changeEmail,
     changePassword,
     toggleRememberMe
-} from './login-actions';
-import loginPage from './ameen-login-redux';
+} from '../Actions/login-actions';
+import loginPage from '../Components/ameen-login-redux';
 const mapStateToProps = (state) => {
     return {
         'email': state.email,
