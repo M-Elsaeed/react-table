@@ -1,59 +1,11 @@
 import React, { Component } from 'react';
-import axios from 'axios';
 import './ameen-dashboard.scss';
 import './icons.scss';
 import { Link } from 'react-router-dom'
 class Dashboard extends Component {
-    state = {
-        'email': '',
-        'password': '',
-        'remember': 'true',
-        'submitted': false
-    }
-
     componentDidMount() {
     }
-    change = e => {
-        if (e.target.getAttribute('type') === 'checkbox') {
-            let newCheck = String(!(this.state.remember === "true"))
-            this.setState({
-                [e.target.name]: newCheck
-            });
-        }
-        else
-            this.setState({
-                [e.target.name]: e.target.value
-            });
-    };
-    emailValid() {
-        let emailRegex = /[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/gi;
-        return emailRegex.test(this.state.email);
-    }
-    passValid() {
-        let passRegex = /^...+$/gi;
-        return passRegex.test(this.state.password);
-    }
-    onSubmit = e => {
-        e.preventDefault();
-        //Do Something with the state
-        this.setState({
-            // 'email': '',
-            // 'password': '',
-            // 'remember': 'true',
-            'submitted': true
-        });
-        if (this.emailValid() && this.passValid()) {
-            let req = { 'email': this.state.email, 'password': this.state.password };
-            axios.post('http://173.199.166.52/~wknode/api/api/login', req)
-                .then(res => {
-                    console.log(JSON.stringify(res.data))
-                    console.log('logged in successfully');
-                })
-                .catch(err => {
-                    console.log(err);
-                })
-        }
-    };
+
 
     render() {
         return (
@@ -97,8 +49,32 @@ class Dashboard extends Component {
                     <div className="user-side-bar__hello"><span>Hello</span><br></br><span className="--sky-blue">M.Diab</span></div>
                 </div>
                 <div className="content" >
-
-                    <table>
+                    {/* Using Divs */}
+                    <div>
+                        <div className="--header-div">
+                            <p>ID</p>
+                            <p>Name</p>
+                            <p>Email</p>
+                            <p>Role</p>
+                        </div>
+                        <div className="--data-div">
+                            <p>
+                                1
+                                </p>
+                            <p className="--sky-blue">
+                                Doaa Saleh
+                                </p>
+                            <p >
+                                doaa.saleh@webkeyz.com
+                                </p>
+                            <p >
+                                Adminstrator
+                                </p>
+                        </div>
+                    </div>
+                    {/* Using a table  */}
+                    {/* 
+                    <table cellSpacing="0" cellPadding="0">
                         <tbody>
                             <tr>
                                 <th className="--first" >ID</th>
@@ -166,7 +142,7 @@ class Dashboard extends Component {
                                 <td></td>
                             </tr>
                         </tbody>
-                    </table>
+                    </table> */}
                 </div>
             </div>
         );
