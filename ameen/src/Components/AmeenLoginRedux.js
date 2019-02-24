@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './AmeenLogin.scss';
+import { Route, Redirect } from 'react-router'
 
 class Login extends Component {
     emailValid() {
@@ -11,6 +12,10 @@ class Login extends Component {
         return passRegex.test(this.props.password);
     }
     render() {
+        if (this.props.isLoggedIn) {
+            return (
+                <Redirect to="/dashboard" />);
+        }
         return (
             <div className="ameen-login-component" >
                 <div className="semicircle" >
@@ -27,6 +32,10 @@ class Login extends Component {
                 <form className="loginForm">
 
                     <div className="loginForm__formContainer">
+                        {
+                        this.props.submitted&&!this.props.isLoggedIn?
+                        <div className="--alerting" >User Name or password incorrect</div>:undefined
+                        }
                         {
                             this.props.submitted && (!this.emailValid() || !this.passValid()) ?
                                 <div>

@@ -4,6 +4,7 @@ import './icons.scss';
 import { Link } from 'react-router-dom'
 class Dashboard extends Component {
     componentDidMount() {
+        this.props.fetch()
     }
     render() {
         return (
@@ -55,20 +56,30 @@ class Dashboard extends Component {
                             <p>Email</p>
                             <p>Role</p>
                         </div>
-                        <div className="--data-div">
-                            <p>
-                                1
-                                </p>
-                            <p className="--sky-blue">
-                                Doaa Saleh
-                                </p>
-                            <p >
-                                doaa.saleh@webkeyz.com
-                                </p>
-                            <p >
-                                Adminstrator
-                                </p>
-                        </div>
+
+
+                        {
+                            this.props.succeededFetching ? this.props.users.map((item, i) => {
+                                console.log(item);
+                                return (
+                                    <div key={i} className="--data-div">
+                                        <p>
+                                            {item.userID}
+                                        </p>
+                                        <p className="--sky-blue">
+                                            {item.fullName}
+                                        </p>
+                                        <p >
+                                            {item.contactInfo}
+                                        </p>
+                                        <p >
+                                            {item.role}
+                                        </p>
+                                    </div>
+                                )
+                            }) : undefined
+                        }
+
                     </div>
                 </div>
             </div>

@@ -13,7 +13,8 @@ const INITIAL_STATE = {
     'password': '',
     'remember': 'false',
     'submitted': false,
-    'loading':false
+    'loading':false,
+    'isLoggedIn':false
 }
 
 export default function (state = INITIAL_STATE, action) {
@@ -21,8 +22,8 @@ export default function (state = INITIAL_STATE, action) {
         case INVALID_LOGIN_ATTEMPT:
             {
                 return {
-                    ...state,
-                    'submitted': true,
+                    ...INITIAL_STATE,
+                    'submitted': true
                 }
 
             }
@@ -32,7 +33,9 @@ export default function (state = INITIAL_STATE, action) {
                 return {
                     ...state,
                     'response': action.payload,
-                    'loading':action.loading
+                    'loading':action.loading,
+                    'isLoggedIn':false,
+                    'submitted': true
                 }
             }
         case LOGIN_ATTEMPT_SUCCESS:
@@ -41,7 +44,8 @@ export default function (state = INITIAL_STATE, action) {
                 return {
                     ...state,
                     "token": action.tokens,
-                    'loading':action.loading
+                    'loading':action.loading,
+                    'isLoggedIn':true
                 }
             }
         case LOGIN_ATTEMPT_FAILURE:
@@ -49,7 +53,10 @@ export default function (state = INITIAL_STATE, action) {
                 return {
                     ...state,
                     "errorResponse": action.errors,
-                    'loading':action.loading
+                    'loading':action.loading,
+                    'isLoggedIn':false,
+                    'submitted': true,
+
                 }
             }
         case CHANGE_EMAIL:

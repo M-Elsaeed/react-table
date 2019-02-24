@@ -179,3 +179,11 @@
         border-style: solid;
     }
 }
+
+@media only screen and (max-width: 567px) {
+    /* For mobile phones: */
+    .loginForm {
+        height: 90%!important;
+        width: 80%!important;
+    }
+  }

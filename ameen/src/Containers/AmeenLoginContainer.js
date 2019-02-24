@@ -18,7 +18,8 @@ const mapStateToProps = (state) => {
         'password': state.login.password,
         'remember': state.login.remember,
         'submitted': state.login.submitted,
-        'loading': state.login.loading
+        'loading': state.login.loading,
+        'isLoggedIn': state.login.isLoggedIn
     };
 }
 const mapDispatchToProps = (dispatch) => {
@@ -42,6 +43,7 @@ const mapDispatchToProps = (dispatch) => {
                     console.log("responseeeeeeeeeeeeee", response.data);
                     console.log(response.data.status);
                     if (response.data.status === 'true') {
+                        localStorage.setItem('webkeyzAccessToken', response.data.access_token)
                         dispatch(loginSuccess(response.data.access_token));
                         // Navigate to dashboard after saving the token in a cookie.
                     } else {
