@@ -6,18 +6,18 @@ import {
 
 const INITIAL_STATE = {
     succeededFetching: false,
-    attemptedFetching: false,
     failedFetching: false,
-    loading: false
+    loading: false,
+    users: undefined
 }
 
 export default function (state = INITIAL_STATE, action) {
     switch (action.type) {
         case FETCH:
             {
+                console.log('this was called');
                 return {
                     ...state,
-                    attemptedFetching: true,
                     loading: true,
                     payload: action.payload
                 }
@@ -25,22 +25,33 @@ export default function (state = INITIAL_STATE, action) {
             }
         case FETCH_SUCCESS:
             {
+                let x;
+                console.log(state.users)
+                if (!state.users){
+                    console.log('error if')
+                    x = [...action.users.usersList]
 
+                }
+                else{
+                    console.log('error else')
+                    x = [...state.users.usersList, ...action.users.usersList]
+                }
+                console.log(x)
                 return {
                     ...state,
                     succeededFetching: true,
-                    attemptedFetching: false,
                     failedFetching: false,
                     loading: false,
-                    users: action.users
+                    users: {
+                        ...action.users,
+                        usersList: x
+                    }
                 }
             }
         case FETCH_FAILURE:
             {
                 return {
                     ...state,
-                    succeededFetching: false,
-                    attemptedFetching: false,
                     failedFetching: true,
                     loading: false
                 }

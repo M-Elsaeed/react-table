@@ -9,7 +9,7 @@ import logger from 'redux-logger';
 
 let middlewares;
 if (process.env.NODE_ENV !== 'production') {
-    // if development let action appear in console.log
+    // if development let action appear in //console.log
     middlewares = applyMiddleware(promise, logger);
 } else {
     // if production

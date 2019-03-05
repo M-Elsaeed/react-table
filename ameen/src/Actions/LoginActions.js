@@ -7,6 +7,15 @@ export const LOGIN_ATTEMPT_FAILURE = 'LOGIN_ATTEMPT_FAILURE';
 export const CHANGE_EMAIL = 'CHANGE_EMAIL';
 export const CHANGE_PASSWORD = 'CHANGE_PASSWORD';
 export const TOGGLE_REMEMBER = 'TOGGLE_REMEMBER';
+export const RESET_STATE = 'RESET_STATE';
+
+
+export function resetState() {
+
+    return {
+        type: RESET_STATE
+    };
+}
 
 export function invalidLoginAttempt() {
     return {
@@ -15,8 +24,8 @@ export function invalidLoginAttempt() {
 }
 
 export function login(obj) {
-    console.log('fetch called');
-    console.log(JSON.stringify(obj));
+    //console.log('fetch called');
+    //console.log(JSON.stringify(obj));
     const request = axios.post('http://173.199.166.52/~wknode/api/api/login', obj);
 
     return {
@@ -26,17 +35,16 @@ export function login(obj) {
     };
 }
 
-export function loginSuccess(access_token) {
-    console.log('success called');
+export function loginSuccess() {
+    //console.log('success called');
     return {
         type: LOGIN_ATTEMPT_SUCCESS,
-        loading: false,
-        tokens: access_token
+        loading: false
     };
 }
 
 export function loginFailure(error) {
-    console.log('failed called');
+    //console.log('failed called');
     return {
         type: LOGIN_ATTEMPT_FAILURE,
         loading: false,
@@ -45,7 +53,7 @@ export function loginFailure(error) {
 }
 
 export function changeEmail(newEmail) {
-    console.log('change Email called');
+    //console.log('change Email called');
     return {
         type: CHANGE_EMAIL,
         newEmail: newEmail
@@ -53,7 +61,7 @@ export function changeEmail(newEmail) {
 }
 
 export function changePassword(newPass) {
-    console.log('change password called');
+    //console.log('change password called');
     return {
         type: CHANGE_PASSWORD,
         newPassword: newPass
@@ -61,7 +69,7 @@ export function changePassword(newPass) {
 }
 
 export function toggleRememberMe() {
-    console.log('remember me toggeled');
+    //console.log('remember me toggeled');
     return {
         type: TOGGLE_REMEMBER
     };

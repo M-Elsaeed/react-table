@@ -5,37 +5,45 @@ import {
     LOGIN_ATTEMPT_FAILURE,
     CHANGE_EMAIL,
     CHANGE_PASSWORD,
-    TOGGLE_REMEMBER
+    TOGGLE_REMEMBER,
+    RESET_STATE
 } from '../Actions/LoginActions'
 
 const INITIAL_STATE = {
-    'email': '',
-    'password': '',
-    'remember': 'false',
-    'submitted': false,
-    'loading':false,
-    'isLoggedIn':false
+    email: '',
+    password: '',
+    remember: 'false',
+    submitted: false,
+    loading: false,
+    isLoggedIn: false,
+    invalidCredentials: false
 }
 
 export default function (state = INITIAL_STATE, action) {
     switch (action.type) {
+        case RESET_STATE:
+        {
+            return {
+                ...INITIAL_STATE
+            }
+
+        }
         case INVALID_LOGIN_ATTEMPT:
             {
                 return {
                     ...INITIAL_STATE,
-                    'submitted': true
+                    submitted: true
                 }
 
             }
         case LOGIN_ATTEMPT:
             {
-
                 return {
                     ...state,
-                    'response': action.payload,
-                    'loading':action.loading,
-                    'isLoggedIn':false,
-                    'submitted': true
+                    response: action.payload,
+                    loading: action.loading,
+                    isLoggedIn: false,
+                    submitted: true
                 }
             }
         case LOGIN_ATTEMPT_SUCCESS:
@@ -43,47 +51,46 @@ export default function (state = INITIAL_STATE, action) {
                 // Navigate to dashboard page and save token in cookie or in state
                 return {
                     ...state,
-                    "token": action.tokens,
-                    'loading':action.loading,
-                    'isLoggedIn':true
+                    loading: action.loading,
+                    isLoggedIn: true
                 }
             }
         case LOGIN_ATTEMPT_FAILURE:
             {
                 return {
                     ...state,
-                    "errorResponse": action.errors,
-                    'loading':action.loading,
-                    'isLoggedIn':false,
-                    'submitted': true,
-
+                    errorResponse: action.errors,
+                    loading: action.loading,
+                    isLoggedIn: false,
+                    submitted: true,
+                    invalidCredentials: true
                 }
             }
         case CHANGE_EMAIL:
             {
                 return {
                     ...state,
-                    "email": action.newEmail
+                    email: action.newEmail
                 }
             }
         case CHANGE_PASSWORD:
             {
                 return {
                     ...state,
-                    "password": action.newPassword
+                    password: action.newPassword
                 }
             }
         case TOGGLE_REMEMBER:
             {
 
                 let newRemember = state.remember === "true";
-                console.log("before toggle", newRemember);
+                //console.log("before toggle", newRemember);
                 newRemember = !newRemember;
                 newRemember = String(newRemember);
-                console.log("after toggle", newRemember);
+                //console.log("after toggle", newRemember);
                 return {
                     ...state,
-                    "remember": newRemember
+                    remember: newRemember
                 }
             }
         default:

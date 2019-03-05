@@ -8,7 +8,7 @@
     }
 
     @mixin btnFade ($dir) {
-        background-image: linear-gradient($dir, #0070cc, #00deff);
+        background-image: linear-gradient($dir, #0070cc, #00deff) !important;
 
     }
 
@@ -297,4 +297,32 @@
     .--float-left {
         float: left;
     }
+
+    .--alerting {
+        // position: relative;
+        border-width: 2px;
+        border-radius: 4px;
+        border-color: crimson;
+        border-style: solid;
+        padding: 5px;
+        margin: 5px auto;
+        font-size: 10px;
+    }
+
+
+    .view-more {
+        width: 60%;
+        height: 40px;
+        border-radius: 5px;
+        border-color: transparent;
+        border-width: 0px;
+        @include btnFade(to right);
+        color: whitesmoke;
+        font-weight: bold;
+        cursor: pointer;
+    }
+    .view-more:disabled {
+        cursor: not-allowed;
+    }
+
 }

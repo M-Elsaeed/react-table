@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './AmeenLogin.scss';
-import { Route, Redirect } from 'react-router'
+import { Redirect } from 'react-router'
 
 class Login extends Component {
     emailValid() {
@@ -10,6 +10,9 @@ class Login extends Component {
     passValid() {
         let passRegex = /^...+$/gi;
         return passRegex.test(this.props.password);
+    }
+    componentWillUnmount(){
+        this.props.resetState();
     }
     render() {
         if (this.props.isLoggedIn) {
@@ -33,31 +36,11 @@ class Login extends Component {
 
                     <div className="loginForm__formContainer">
                         {
-                        this.props.submitted&&!this.props.isLoggedIn?
-                        <div className="--alerting" >User Name or password incorrect</div>:undefined
+                            this.props.invalidCredentials && !this.props.loading ?
+                                <div className="--alerting" >User Name or password incorrect</div> : undefined
                         }
                         {
-                            this.props.submitted && (!this.emailValid() || !this.passValid()) ?
-                                <div>
-                                    {
-                                        !this.emailValid() ?
-                                            <div className="--alerting">
-                                                <p>Email is invalid it has to be in the form ABC@XYZ.MN</p>
-                                            </div>
-                                            : undefined
-                                    }
-                                    {
-                                        !this.passValid() ?
-                                            <div className="--alerting">
-                                                <p>Password is invalid minimum 3 charachters</p>
-                                            </div>
-                                            : undefined
-                                    }
-                                </div>
-                                : undefined
 
-                        }
-                        {
                             (!this.props.submitted) && (this.props.email === '') ?
                                 <input
                                     name="email"
@@ -80,6 +63,13 @@ class Login extends Component {
                                         placeholder="email"
                                         type="email" />}
 
+                        {
+                            this.props.submitted && !this.emailValid() ?
+                                <div className="--alerting">
+                                    <p>Email is invalid it has to be in the form ABC@XYZ.MN</p>
+                                </div>
+                                : undefined
+                        }
 
                         {(!this.props.submitted) && (this.props.password === '') ?
                             <input
@@ -102,6 +92,13 @@ class Login extends Component {
                                     className="invalid"
                                     placeholder="password"
                                     type="password" />
+                        }
+                        {
+                            this.props.submitted && !this.passValid() ?
+                                <div className="--alerting">
+                                    <p>Password is invalid minimum 3 charachters</p>
+                                </div>
+                                : undefined
                         }
                         <label>
                             {
@@ -143,10 +140,6 @@ class Login extends Component {
                         }
                     </div>
                 </form>
-                <div>
-                    {/* Ask if this is ok to do this to add space to the bottom of the page */}
-                    <br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br>
-                </div>
             </div>
         );
     }

@@ -6,6 +6,13 @@ class Dashboard extends Component {
     componentDidMount() {
         this.props.fetch()
     }
+    getNumberOfUsers() {
+        return this.props.users ? this.props.users.usersNo : '';
+    }
+    isLoading(){
+        console.log(this.props.loading);
+        return this.props.loading;
+    }
     render() {
         return (
             <div className="ameen-dashboard-component" >
@@ -37,7 +44,7 @@ class Dashboard extends Component {
                 </div>
                 <div className="top-bar" >
                     <Link to='Login' className="top-bar__users" >
-                        <i className="icon-User --float-left"></i> <span >&nbsp;3 Users</span>
+                        <i className="icon-User --float-left"></i> <span >&nbsp;{this.getNumberOfUsers()} Users</span>
                     </Link>
                     <Link to='Login' className="top-bar__add-btn" >
                         <i className="icon-Plus --float-left --small-icon"></i><span>&nbsp;Add User</span>
@@ -59,8 +66,8 @@ class Dashboard extends Component {
 
 
                         {
-                            this.props.succeededFetching ? this.props.users.map((item, i) => {
-                                console.log(item);
+                            this.props.succeededFetching ? this.props.users.usersList.map((item, i) => {
+                                //console.log(item);
                                 return (
                                     <div key={i} className="--data-div">
                                         <p>
@@ -79,6 +86,22 @@ class Dashboard extends Component {
                                 )
                             }) : undefined
                         }
+                        {
+                            this.props.failedFetching && !this.props.succeededFetching ? <div className="--alerting" >Failed To fetch content</div> : undefined
+                        }
+                        {
+                            this.props.failedFetching && this.props.succeededFetching ? <div className="--alerting" >No more Users!</div> : undefined
+                        }
+                        <button className="view-more" onClick={
+                            (e) => {
+                                e.preventDefault();
+                                this.props.fetch()
+                            }
+
+                        }
+                            disabled={this.isLoading()}>
+                            View More...
+                        </button>
 
                     </div>
                 </div>
