@@ -11,7 +11,7 @@ export function fetch() {
     console.log('fetch called');
     const request = axios.post('http://173.199.166.52/~wknode/api/api/users', {
         "pageSize": 20,
-        "pageIndex": pageIndexCounter++;
+        "pageIndex": pageIndexCounter++
     }, {
         headers: {
             Authorization: cookies.getCookie('webkeyzAccessToken')
