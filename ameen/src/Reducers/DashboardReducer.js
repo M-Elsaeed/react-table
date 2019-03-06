@@ -1,4 +1,5 @@
 import {
+    PRE_FETCH,
     FETCH,
     FETCH_SUCCESS,
     FETCH_FAILURE
@@ -13,12 +14,21 @@ const INITIAL_STATE = {
 
 export default function (state = INITIAL_STATE, action) {
     switch (action.type) {
-        case FETCH:
+        case PRE_FETCH:
             {
                 console.log('this was called');
                 return {
                     ...state,
                     loading: true,
+
+                }
+
+            }
+        case FETCH:
+            {
+                console.log('this was called');
+                return {
+                    ...state,
                     payload: action.payload
                 }
 
@@ -27,12 +37,11 @@ export default function (state = INITIAL_STATE, action) {
             {
                 let x;
                 console.log(state.users)
-                if (!state.users){
+                if (!state.users) {
                     console.log('error if')
                     x = [...action.users.usersList]
 
-                }
-                else{
+                } else {
                     console.log('error else')
                     x = [...state.users.usersList, ...action.users.usersList]
                 }

@@ -1,9 +1,19 @@
 import axios from 'axios';
 import cookies from '../cookie'
 //Post list
+export const PRE_FETCH = 'PRE_FETCH';
 export const FETCH = 'FETCH';
 export const FETCH_SUCCESS = 'FETCH_SUCCESS';
 export const FETCH_FAILURE = 'FETCH_FAILURE';
+
+
+export function preFetch() {
+    //console.log('preFetch called');
+    return {
+        type: PRE_FETCH
+    };
+}
+
 
 let pageIndexCounter = 1;
 

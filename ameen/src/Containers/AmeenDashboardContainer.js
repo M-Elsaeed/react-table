@@ -4,7 +4,8 @@ import {
 import {
     fetch,
     fetchSuccess,
-    fetchFailure
+    fetchFailure,
+    preFetch
 } from '../Actions/DashboardActions';
 import DashboardRedux from '../Components/AmeenDashboardRedux';
 const mapStateToProps = (state) => {
@@ -19,6 +20,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
     return {
         fetch: () => {
+            dispatch(preFetch());
             dispatch(fetch())
                 .then((response) => {
                     //console.log("responseeeeeeeeeeeeee", response);
