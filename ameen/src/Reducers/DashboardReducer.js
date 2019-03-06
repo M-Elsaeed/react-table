@@ -2,18 +2,28 @@ import {
     PRE_FETCH,
     FETCH,
     FETCH_SUCCESS,
-    FETCH_FAILURE
+    FETCH_FAILURE,
+    UPDATE_FILTER
 } from '../Actions/DashboardActions'
 
 const INITIAL_STATE = {
     succeededFetching: false,
     failedFetching: false,
     loading: false,
-    users: undefined
+    users: undefined,
+    filter:''
 }
 
 export default function (state = INITIAL_STATE, action) {
     switch (action.type) {
+        case UPDATE_FILTER:{
+            console.log('filter Updated');
+            console.log(action.newFilter)
+            return {
+                ...state,
+                filter: action.newFilter,
+            }
+        }
         case PRE_FETCH:
             {
                 console.log('this was called');

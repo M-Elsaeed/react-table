@@ -5,6 +5,7 @@ export const PRE_FETCH = 'PRE_FETCH';
 export const FETCH = 'FETCH';
 export const FETCH_SUCCESS = 'FETCH_SUCCESS';
 export const FETCH_FAILURE = 'FETCH_FAILURE';
+export const UPDATE_FILTER = 'UPDATE_FILTER';
 
 
 export function preFetch() {
@@ -14,13 +15,21 @@ export function preFetch() {
     };
 }
 
+export function updateFilter(newFilter) {
+    //console.log('preFetch called');
+    return {
+        type: UPDATE_FILTER,
+        newFilter: newFilter
+    };
+}
+
 
 let pageIndexCounter = 1;
 
 export function fetch() {
     console.log('fetch called');
     const request = axios.post('http://173.199.166.52/~wknode/api/api/users', {
-        "pageSize": 20,
+        "pageSize": 500,//20,
         "pageIndex": pageIndexCounter++
     }, {
         headers: {

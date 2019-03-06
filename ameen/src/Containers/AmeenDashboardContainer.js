@@ -5,7 +5,8 @@ import {
     fetch,
     fetchSuccess,
     fetchFailure,
-    preFetch
+    preFetch,
+    updateFilter
 } from '../Actions/DashboardActions';
 import DashboardRedux from '../Components/AmeenDashboardRedux';
 const mapStateToProps = (state) => {
@@ -14,11 +15,15 @@ const mapStateToProps = (state) => {
         succeededFetching: state.dashboard.succeededFetching,
         failedFetching: state.dashboard.failedFetching,
         loading: state.dashboard.loading,
-        users: state.dashboard.users
+        users: state.dashboard.users,
+        filter: state.dashboard.filter
     };
 }
 const mapDispatchToProps = (dispatch) => {
     return {
+        updateFilter: (newFilter) => {
+            dispatch(updateFilter(newFilter));
+        },
         fetch: () => {
             dispatch(preFetch());
             dispatch(fetch())
@@ -35,7 +40,7 @@ const mapDispatchToProps = (dispatch) => {
                         //Show wrong email/password
                     }
                 })
-                .catch((err)=>{
+                .catch((err) => {
                     console.log(err);
                     dispatch(fetchFailure());
                 });

@@ -26,7 +26,7 @@ const mapStateToProps = (state) => {
         invalidCredentials: state.login.invalidCredentials
     };
 }
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = (dispatch,thisState) => {
     return {
         resetState: () => {
             dispatch(resetState())
@@ -44,12 +44,19 @@ const mapDispatchToProps = (dispatch) => {
             dispatch(toggleRememberMe())
         },
         login: (obj) => {
+            let temp = {...obj};
             dispatch(login(obj)).payload
                 .then((response) => {
+                    //console.log(obj);
                     //console.log("responseeeeeeeeeeeeee", response.data);
                     //console.log(response.data.status);
                     if (response.data.status === 'true') {
-                        cookies.setCookie('webkeyzAccessToken', response.data.access_token, 30)
+                        cookies.setCookie('webkeyzAccessToken', response.data.access_token, 1);
+                        if(obj.remember=='true'){
+                            cookies.setCookie('savedEmail', obj.email, 30);
+                            cookies.setCookie('savedPassword', obj.password, 30);
+                            cookies.setCookie('rememberMe', obj.remember, 30);
+                        }
                         dispatch(loginSuccess());
                         // Navigate to dashboard after saving the token in a cookie.
                     } else {

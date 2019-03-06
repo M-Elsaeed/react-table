@@ -1,9 +1,23 @@
 * {
     box-sizing: border-box;
 }
-
+::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+    color: #acabab;
+  }
+  ::-moz-placeholder { /* Firefox 19+ */
+    color: #acabab;
+  }
+  :-ms-input-placeholder { /* IE 10+ */
+    color: #acabab;
+  }
+  :-moz-placeholder { /* Firefox 18- */
+    color: #acabab;
+  }
 .ameen-login-component {
     padding-bottom:150px;
+    padding-top:150px;
+
+
     .--alerting {
         // position: relative;
         border-width: 2px;
@@ -156,7 +170,9 @@
         color: lightgrey;
         float: left;
         padding: 10px;
-        margin: 5px
+        margin: 5px;
+        padding-left:0;
+        margin-left:0;
     }
 
     .loginButton {

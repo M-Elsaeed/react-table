@@ -8,30 +8,30 @@ import {
     TOGGLE_REMEMBER,
     RESET_STATE
 } from '../Actions/LoginActions'
-
+import cookies from "../cookie";
 const INITIAL_STATE = {
-    email: '',
-    password: '',
-    remember: 'false',
+    email: cookies.getCookie('savedEmail'),
+    password: cookies.getCookie('savedPassword'),
+    remember: cookies.getCookie('rememberMe'),
     submitted: false,
     loading: false,
-    isLoggedIn: false,
+    isLoggedIn: false,//cookies.checkUserCookie(),
     invalidCredentials: false
 }
 
 export default function (state = INITIAL_STATE, action) {
     switch (action.type) {
         case RESET_STATE:
-        {
-            return {
-                ...INITIAL_STATE
-            }
+            {
+                return {
+                    ...INITIAL_STATE
+                }
 
-        }
+            }
         case INVALID_LOGIN_ATTEMPT:
             {
                 return {
-                    ...INITIAL_STATE,
+                    ...state,
                     submitted: true
                 }
 

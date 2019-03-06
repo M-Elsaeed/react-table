@@ -11,7 +11,7 @@ class Login extends Component {
         let passRegex = /^...+$/gi;
         return passRegex.test(this.props.password);
     }
-    componentWillUnmount(){
+    componentWillUnmount() {
         this.props.resetState();
     }
     render() {
@@ -21,23 +21,23 @@ class Login extends Component {
         }
         return (
             <div className="ameen-login-component" >
-                <div className="semicircle" >
-                    <div id="semicircle__blue" className="semicircle__blue"></div>
-                    <div id="semicircle__logo" className="semicircle__logo"></div>
-                </div>
-                <div className="dashed-ellipse" >
-                    <div id="dashed-ellipse__border" className="dashed-ellipse__border"></div>
-                </div>
-                <div className="solid-ellipse" >
-                    <div id="solid-ellipse__border" className="solid-ellipse__border"></div>
-                </div>
-
+                    {/* <div>
+                        <div className="semicircle" >
+                            <div id="semicircle__blue" className="semicircle__blue"></div>
+                            <div id="semicircle__logo" className="semicircle__logo"></div>
+                        </div>
+                        <div className="dashed-ellipse" >
+                            <div id="dashed-ellipse__border" className="dashed-ellipse__border"></div>
+                        </div>
+                        <div className="solid-ellipse" >
+                            <div id="solid-ellipse__border" className="solid-ellipse__border"></div>
+                        </div>
+                    </div> */}
                 <form className="loginForm">
-
                     <div className="loginForm__formContainer">
                         {
                             this.props.invalidCredentials && !this.props.loading ?
-                                <div className="--alerting" >User Name or password incorrect</div> : undefined
+                                <div >username and password you added are not registered</div> : undefined
                         }
                         {
 
@@ -46,7 +46,7 @@ class Login extends Component {
                                     name="email"
                                     value={this.props.email}
                                     onChange={e => this.props.changeEmail(e.target.value)}
-                                    placeholder="email"
+                                    placeholder="username"
                                     type="email" />
                                 : this.emailValid() ?
                                     <input
@@ -59,14 +59,20 @@ class Login extends Component {
                                         name="email"
                                         value={this.props.email}
                                         onChange={e => this.props.changeEmail(e.target.value)}
-                                        className="invalid"
                                         placeholder="email"
                                         type="email" />}
 
                         {
-                            this.props.submitted && !this.emailValid() ?
-                                <div className="--alerting">
-                                    <p>Email is invalid it has to be in the form ABC@XYZ.MN</p>
+                            this.props.submitted && !this.emailValid() && this.props.email !== '' ?
+                                <div>
+                                    <p>please enter valid format</p>
+                                </div>
+                                : undefined
+                        }
+                        {
+                            this.props.submitted && !this.emailValid() && this.props.email == '' ?
+                                <div>
+                                    <p>please fill the field password username</p>
                                 </div>
                                 : undefined
                         }
@@ -89,14 +95,20 @@ class Login extends Component {
                                     name="password"
                                     value={this.props.password}
                                     onChange={e => this.props.changePassword(e.target.value)}
-                                    className="invalid"
                                     placeholder="password"
                                     type="password" />
                         }
                         {
-                            this.props.submitted && !this.passValid() ?
-                                <div className="--alerting">
-                                    <p>Password is invalid minimum 3 charachters</p>
+                            this.props.submitted && !this.passValid() && this.props.password !== '' ?
+                                <div>
+                                    <p>please enter valid format</p>
+                                </div>
+                                : undefined
+                        }
+                        {
+                            this.props.submitted && !this.passValid() && this.props.password == '' ?
+                                <div>
+                                    <p>please fill the field password</p>
                                 </div>
                                 : undefined
                         }
@@ -130,7 +142,7 @@ class Login extends Component {
                                         e.preventDefault();
                                         (this.emailValid() && this.passValid()) ?
                                             this.props.login({
-                                                "email": this.props.email, "password": this.props.password
+                                                "email": this.props.email, "password": this.props.password, "remember": this.props.remember
                                             })
                                             :
                                             this.props.invalidLoginAttempt()

@@ -21,15 +21,12 @@ export default class CookieInterface {
         return "";
     }
 
-    // static checkCookie() {
-    //     var user = this.getCookie("username");
-    //     if (user !== "") {
-    //         alert("Welcome again " + user);
-    //     } else {
-    //         user = prompt("Please enter your name:", "");
-    //         if (user !== "" && user !== null) {
-    //             this.setCookie("username", user, 365);
-    //         }
-    //     }
-    // }
+    static checkUserCookie() {
+        let user = this.getCookie("webkeyzAccessToken");
+        if (user !== "") {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }
