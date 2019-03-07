@@ -36,12 +36,26 @@
         background-color: lightgray;
     }
 
+    .side-panel-back {
+        position: fixed;
+        width: 19%;
+        height: 87.5%;
+        margin-top:12.5%;
+        background-image: linear-gradient(to bottom, #334261 50%, #334261 50%, #536281);
+        background-size: cover;
+        background-repeat: no-repeat;
+        opacity: 0.95;
+    }
+
     .side-panel {
         position: fixed;
         width: 19%;
         height: 100%;
-        background-image: linear-gradient(to bottom, #334261 50%, #334261 50%, #536281);
+        background-image: url(../res/dashboardPattern.png); // linear-gradient(to bottom, #334261 50%, #334261 50%, #536281);
+        background-size: cover;
+        background-repeat: no-repeat;
         overflow: hidden;
+        background-color: transparent;
 
         &__semi-circle {
 
@@ -109,6 +123,10 @@
             span {
                 margin: 0;
                 margin-left: 10px;
+
+                font-weight: bold;
+
+
             }
         }
 
@@ -132,8 +150,8 @@
             top: 0;
             left: 0;
             background-color: transparent;
-            border: gray dashed;
-            border-width: 1px;
+            border: #465c89 dashed;
+            border-width: 2px;
             border-radius: 50%;
             z-index: 3;
         }
@@ -154,10 +172,10 @@
             height: auto;
             padding-top: 100%;
             background-color: transparent;
-            border: gray solid;
+            border: #465c89 solid;
             border-radius: 50%;
             z-index: 3;
-            border-width: 1px;
+            border-width: 2px;
         }
     }
 
@@ -165,11 +183,7 @@
     .--active {
         @include btnFade(to right);
 
-        p {
-            span {
-                font-weight: bold;
-            }
-        }
+
     }
 
     //Not clean
@@ -267,7 +281,7 @@
                 align-items: center;
                 width: 100%;
                 font-weight: bold;
-                font-variant: petite-caps;
+                // font-variant: petite-caps;
                 padding: 20px 30px 20px 30px;
 
                 p:first-child {
@@ -320,7 +334,7 @@
     }
 
     .--small-icon {
-        font-size: 7px;
+        font-size: 12px;
         vertical-align: middle;
     }
 

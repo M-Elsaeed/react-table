@@ -15,7 +15,7 @@ const INITIAL_STATE = {
     remember: cookies.getCookie('rememberMe'),
     submitted: false,
     loading: false,
-    isLoggedIn: false,//cookies.checkUserCookie(),
+    isLoggedIn: cookies.checkUserCookie(),
     invalidCredentials: false
 }
 

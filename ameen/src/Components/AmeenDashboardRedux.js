@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import './AmeenDashboard.scss';
 import './icons.scss';
-import { Link } from 'react-router-dom'
 class Dashboard extends Component {
     componentDidMount() {
         this.props.fetch()
@@ -16,6 +15,9 @@ class Dashboard extends Component {
     render() {
         return (
             <div className="ameen-dashboard-component" >
+                <div className="side-panel-back" >
+
+                </div>
                 <div className="side-panel" >
                     <div className="side-panel__semi-circle" >
                         <div id="side-panel__blue" className="side-panel__blue"></div>
@@ -71,9 +73,9 @@ class Dashboard extends Component {
                         </div>
                         <div className="--header-div">
                             <p>ID</p>
-                            <p>Name</p>
-                            <p>Email</p>
-                            <p>Role</p>
+                            <p>NAME</p>
+                            <p>EMAIL</p>
+                            <p>ROLE</p>
                         </div>
 
 

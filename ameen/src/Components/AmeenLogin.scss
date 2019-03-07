@@ -1,21 +1,30 @@
 * {
     box-sizing: border-box;
 }
-::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+
+::-webkit-input-placeholder {
+    /* Chrome/Opera/Safari */
     color: #acabab;
-  }
-  ::-moz-placeholder { /* Firefox 19+ */
+}
+
+::-moz-placeholder {
+    /* Firefox 19+ */
     color: #acabab;
-  }
-  :-ms-input-placeholder { /* IE 10+ */
+}
+
+:-ms-input-placeholder {
+    /* IE 10+ */
     color: #acabab;
-  }
-  :-moz-placeholder { /* Firefox 18- */
+}
+
+:-moz-placeholder {
+    /* Firefox 18- */
     color: #acabab;
-  }
+}
+
 .ameen-login-component {
-    padding-bottom:150px;
-    padding-top:150px;
+    padding-bottom: 150px;
+    padding-top: 240px;
 
 
     .--alerting {
@@ -28,6 +37,16 @@
         margin: 5px auto;
         font-size: 10px;
     }
+
+
+    .circles-container {
+        width: 220%;
+        position: relative;
+        margin-left: -60%;
+        margin-top: -60%;
+        margin-bottom: 50px;
+    }
+
 
     .semicircle {
         z-index: 2;
@@ -68,7 +87,7 @@
     .dashed-ellipse {
         z-index: 5;
         width: 91%;
-        top: 0;
+        top: -1.5%;
         left: 1.5%;
         overflow: hidden;
         position: absolute;
@@ -81,8 +100,8 @@
             top: 0;
             left: 0;
             background-color: transparent;
-            border: gray dashed;
-            border-width: 1px;
+            border: 1px #2f3b56 dashed;
+            // border-width: 1px;
             border-radius: 50%;
             z-index: 3;
         }
@@ -93,7 +112,7 @@
     .solid-ellipse {
         z-index: 5;
         width: 95%;
-        top: 0;
+        top: -2%;
         left: 3%;
         overflow: hidden;
         position: absolute;
@@ -106,23 +125,29 @@
             top: 0;
             left: 0;
             background-color: transparent;
-            border: gray solid;
+            border: 1px #2f3b56 solid;
             border-radius: 50%;
             z-index: 3;
-            border-width: 1px;
+            // border-width: 1px;
         }
     }
 
 
     .loginForm {
+        background: url(../res/Pattern.png);
+        background-position: bottom;
+        background-size: 110% 45%;
+        background-repeat: no-repeat;
+        background-origin: border-box;
         border-radius: 5px;
         border-width: 0px;
+        overflow: hidden;
         left: 0;
         right: 0;
-        margin: 0 auto;
+        margin: 85px auto 0 auto;
         height: 60%;
-        width: 30%;
-        padding: 150px 30px 30px 30px;
+        width: 45%;
+        padding: 0 30px 30px 30px;
         margin-top: -100px;
         z-index: 1;
         text-align: center;
@@ -143,7 +168,7 @@
         padding: 5px;
         margin: 5px auto;
         border-radius: 5px;
-        height: 40px;
+        height: 75px;
         border-width: 0;
         background-color: #F4F7FA;
         background-repeat: no-repeat;
@@ -171,13 +196,13 @@
         float: left;
         padding: 10px;
         margin: 5px;
-        padding-left:0;
-        margin-left:0;
+        padding-left: 0;
+        margin-left: 0;
     }
 
     .loginButton {
         width: 100%;
-        height: 40px;
+        height: 70px;
         margin: 5px;
         border-radius: 5px;
         border-color: transparent;
@@ -197,10 +222,10 @@
     }
 }
 
-@media only screen and (max-width: 567px) {
-    /* For mobile phones: */
+@media only screen and (max-width: 1200px) {
+
     .loginForm {
-        height: 90%!important;
-        width: 80%!important;
+        height: 700px !important;
+        width: 80% !important;
     }
-  }
+}

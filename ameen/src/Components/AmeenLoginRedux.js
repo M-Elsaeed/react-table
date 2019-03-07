@@ -21,19 +21,20 @@ class Login extends Component {
         }
         return (
             <div className="ameen-login-component" >
-                    {/* <div>
-                        <div className="semicircle" >
-                            <div id="semicircle__blue" className="semicircle__blue"></div>
-                            <div id="semicircle__logo" className="semicircle__logo"></div>
-                        </div>
-                        <div className="dashed-ellipse" >
-                            <div id="dashed-ellipse__border" className="dashed-ellipse__border"></div>
-                        </div>
-                        <div className="solid-ellipse" >
-                            <div id="solid-ellipse__border" className="solid-ellipse__border"></div>
-                        </div>
-                    </div> */}
+
                 <form className="loginForm">
+                <div className="circles-container" >
+                    <div className="semicircle" >
+                        <div id="semicircle__blue" className="semicircle__blue"></div>
+                        <div id="semicircle__logo" className="semicircle__logo"></div>
+                    </div>
+                    <div className="dashed-ellipse" >
+                        <div id="dashed-ellipse__border" className="dashed-ellipse__border"></div>
+                    </div>
+                    <div className="solid-ellipse" >
+                        <div id="solid-ellipse__border" className="solid-ellipse__border"></div>
+                    </div>
+                </div>
                     <div className="loginForm__formContainer">
                         {
                             this.props.invalidCredentials && !this.props.loading ?
@@ -70,7 +71,7 @@ class Login extends Component {
                                 : undefined
                         }
                         {
-                            this.props.submitted && !this.emailValid() && this.props.email == '' ?
+                            this.props.submitted && !this.emailValid() && this.props.email === '' ?
                                 <div>
                                     <p>please fill the field password username</p>
                                 </div>
@@ -106,7 +107,7 @@ class Login extends Component {
                                 : undefined
                         }
                         {
-                            this.props.submitted && !this.passValid() && this.props.password == '' ?
+                            this.props.submitted && !this.passValid() && this.props.password === '' ?
                                 <div>
                                     <p>please fill the field password</p>
                                 </div>

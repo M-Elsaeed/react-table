@@ -44,7 +44,6 @@ const mapDispatchToProps = (dispatch,thisState) => {
             dispatch(toggleRememberMe())
         },
         login: (obj) => {
-            let temp = {...obj};
             dispatch(login(obj)).payload
                 .then((response) => {
                     //console.log(obj);
@@ -52,7 +51,7 @@ const mapDispatchToProps = (dispatch,thisState) => {
                     //console.log(response.data.status);
                     if (response.data.status === 'true') {
                         cookies.setCookie('webkeyzAccessToken', response.data.access_token, 1);
-                        if(obj.remember=='true'){
+                        if(obj.remember==='true'){
                             cookies.setCookie('savedEmail', obj.email, 30);
                             cookies.setCookie('savedPassword', obj.password, 30);
                             cookies.setCookie('rememberMe', obj.remember, 30);
