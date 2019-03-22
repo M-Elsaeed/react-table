@@ -209,12 +209,12 @@
         border-width: 0px;
         background-image: linear-gradient(to right, #0070cc, #00deff);
         color: white;
-    }
-
-    .loginButton:hover {
         cursor: pointer;
     }
 
+    .loginButton:disabled {
+        cursor: not-allowed;
+    }
     .invalid {
         border-color: red;
         border-width: 2px !important;
